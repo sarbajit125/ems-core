@@ -5,6 +5,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { DefaultTheme, PaperProvider } from "react-native-paper";
 import { ThemeProp } from "react-native-paper/lib/typescript/types";
+import LoginScreen from "./login";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -55,9 +56,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <PaperProvider theme={theme}>
-      <Stack initialRouteName="login/index">
-        <Stack.Screen name="login/index" options={{ headerShown: false }}/>
-      </Stack>
+      <LoginScreen />
     </PaperProvider>
   );
 }

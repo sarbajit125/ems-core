@@ -4,6 +4,7 @@ import React from "react";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
+import GradientButton from "@/components/Gradient/GradientButton";
 
 const LoginScreen = () => {
   const theme = useTheme();
@@ -86,7 +87,9 @@ const LoginScreen = () => {
           <Button icon={"check-circle-outline"} style={styles.keepBtn}>
             Keep me Logged In
           </Button>
-          <Button mode="contained">LOGIN</Button>
+          <GradientButton title={"LOGIN"} onPress={function (): void {
+            throw new Error("Function not implemented.");
+          } } colors={['#E31937','#F49332']} />
           <Button>Forgot password .. ?</Button>
         </View>
         <View style={styles.separatorView}>
