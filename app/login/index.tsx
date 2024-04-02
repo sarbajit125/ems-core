@@ -3,98 +3,115 @@ import { TextInput, Icon, Button, Text } from "react-native-paper";
 import React from "react";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
+import { LinearGradient } from "expo-linear-gradient";
 
 const LoginScreen = () => {
   const theme = useTheme();
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require("../../assets/images/Logo_Colour.png")}
-      />
-      <Text style={styles.title}> Welcome to EMS </Text>
-      <View style={styles.textFieldView}>
-        <TextInput
-          label={"E-mail/Employee Id"}
-          style={styles.textfield}
-          theme={{ roundness: 20 }}
-          left={
-            <TextInput.Icon
-              icon={() => (
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                  }}
-                >
-                  <MaterialCommunityIcons
-                    name="email"
-                    size={24}
-                    color={theme.colors.primary}
-                  />
-                </View>
-              )}
-            />
-          }
+    <LinearGradient
+      colors={["#1A1F24", "#5E6166"]}
+      style={styles.background}
+      start={{ x: 0.1, y: 0.9 }}
+      end={{ x: 0.9, y: 0.1 }}
+    >
+      <View style={styles.container}>
+        <Image
+          style={styles.logo}
+          source={{
+            uri: "https://goldeneagle.comviva.com/idm-service/idm/v0/assets/images/Icon_comviva_orb.png",
+          }}
         />
-        <TextInput
-          label={"PIN"}
-          secureTextEntry={true}
-          style={styles.textfield}
-          theme={{ roundness: 20 }}
-          left={
-            <TextInput.Icon
-              icon={() => (
-                <View
-                  style={{
-                    flex: 1,
-                    justifyContent: "flex-end",
-                    alignItems: "center",
-                  }}
-                >
-                  <Fontisto
-                    name="locked"
-                    size={24}
-                    color={theme.colors.primary}
-                  />
-                </View>
-              )}
-            />
-          }
-        />
+        <Text
+          style={{
+            alignSelf: "center",
+            fontSize: 18,
+            color: theme.colors.onPrimary,
+            marginVertical: 6,
+          }}
+        >
+          Welcome to EMS
+        </Text>
+        <View style={styles.textFieldView}>
+          <TextInput
+            label={"E-mail/Employee Id"}
+            style={styles.textfield}
+            mode="outlined"
+            left={
+              <TextInput.Icon
+                icon={() => (
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      name="email"
+                      size={24}
+                      color={theme.colors.primary}
+                    />
+                  </View>
+                )}
+              />
+            }
+          />
+          <TextInput
+            label={"PIN"}
+            secureTextEntry={true}
+            style={styles.textfield}
+            mode="outlined"
+            left={
+              <TextInput.Icon
+                icon={() => (
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Fontisto
+                      name="locked"
+                      size={24}
+                      color={theme.colors.primary}
+                    />
+                  </View>
+                )}
+              />
+            }
+          />
+        </View>
+        <View style={styles.textFieldView}>
+          <Button icon={"check-circle-outline"} style={styles.keepBtn}>
+            Keep me Logged In
+          </Button>
+          <Button mode="contained">LOGIN</Button>
+          <Button>Forgot password .. ?</Button>
+        </View>
+        <View style={styles.separatorView}>
+          <View style={styles.separator} />
+          <Text style={styles.orText}>OR</Text>
+          <View style={styles.separator} />
+        </View>
+        <View style={styles.accountView}>
+          <Text style={{color: theme.colors.onPrimary}}>Don't have an account?</Text>
+          <Button mode="contained">Create now</Button>
+        </View>
       </View>
-      <View style={styles.textFieldView}>
-        <Button icon={"check-circle-outline"}>Keep me Logged In</Button>
-        <Button mode="contained">LOGIN</Button>
-        <Button>Forgot password .. ?</Button>
-      </View>
-      <View style={styles.separatorView}>
-        <View style={styles.separator} />
-        <Text style={styles.orText}>OR</Text>
-        <View style={styles.separator} />
-      </View>
-      <View style={styles.accountView}>
-        <Text>Don't have an account?</Text>
-        <Button mode="contained">Create now</Button>
-      </View>
-    </View>
+    </LinearGradient>
   );
 };
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    flexDirection: "column",
-    gap: 3,
-  },
+  container: {},
   logo: {
-    width: 220,
-    height: 80,
+    width: 180,
+    height: 180,
     alignSelf: "center",
+    resizeMode: "contain",
   },
   separator: {
     height: 1,
@@ -126,13 +143,23 @@ const styles = StyleSheet.create({
   accountView: {
     marginHorizontal: 16,
     marginTop: 6,
-    flexDirection: 'row',
-    gap: 8,
-    alignItems: 'baseline',
+    flexDirection: "row",
+    gap: 12,
+    alignItems: "baseline",
   },
   title: {
-    alignSelf: 'center',
+    alignSelf: "center",
     fontSize: 18,
-    color: 'grey',
-  }
+    color: "grey",
+    marginVertical: 6,
+  },
+  keepBtn: {
+    alignSelf: "flex-start",
+  },
+  background: {
+    flex: 1,
+    justifyContent: "center",
+    flexDirection: "column",
+    gap: 3,
+  },
 });

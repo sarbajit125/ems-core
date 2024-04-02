@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { DefaultTheme, PaperProvider } from "react-native-paper";
+import { ThemeProp } from "react-native-paper/lib/typescript/types";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -15,11 +16,13 @@ export const unstable_settings = {
   initialRouteName: "login",
 };
 
-const theme = {
+const theme: ThemeProp = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    primary: '#F3901D',
   },
+  roundness: 20,
 }
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -52,7 +55,7 @@ export default function RootLayout() {
 function RootLayoutNav() {
   return (
     <PaperProvider theme={theme}>
-      <Stack>
+      <Stack initialRouteName="login/index">
         <Stack.Screen name="login/index" options={{ headerShown: false }}/>
       </Stack>
     </PaperProvider>
