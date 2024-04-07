@@ -38,7 +38,11 @@ const LoginScreen = () => {
               <TextInput.Icon
                 icon={() => (
                   <View
-                    style={styles.textFieldView}
+                    style={{
+                      flex: 1,
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
                   >
                     <MaterialCommunityIcons
                       name="email"
@@ -59,7 +63,11 @@ const LoginScreen = () => {
               <TextInput.Icon
                 icon={() => (
                   <View
-                    style={styles.textFieldView}
+                    style={{
+                      flex: 1,
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                    }}
                   >
                     <Fontisto
                       name="locked"
