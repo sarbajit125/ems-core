@@ -5,12 +5,13 @@ import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
 import GradientButton from "@/components/Gradient/GradientButton";
+import { ColorDao } from "@/constants/Colors";
 
 const LoginScreen = () => {
   const theme = useTheme();
   return (
     <LinearGradient
-      colors={["#1A1F24", "#5E6166"]}
+      colors={[ColorDao.topBackgroundGradient, ColorDao.bottomBackgroundGradient]}
       style={styles.background}
       start={{ x: 0.1, y: 0.9 }}
       end={{ x: 0.9, y: 0.1 }}
@@ -89,7 +90,7 @@ const LoginScreen = () => {
           </Button>
           <GradientButton title={"LOGIN"} onPress={function (): void {
             throw new Error("Function not implemented.");
-          } } colors={['#E31937','#F49332']} />
+          } } />
           <Button>Forgot password .. ?</Button>
         </View>
         <View style={styles.separatorView}>
@@ -99,7 +100,7 @@ const LoginScreen = () => {
         </View>
         <View style={styles.accountView}>
           <Text style={{color: theme.colors.onPrimary}}>Don't have an account?</Text>
-          <Button mode="contained">Create now</Button>
+          <GradientButton title="Create now" onPress={() => console.log("Registration flow")} />
         </View>
       </View>
     </LinearGradient>
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginTop: 6,
     flexDirection: "row",
-    gap: 12,
+    justifyContent: 'space-between',
     alignItems: "baseline",
   },
   title: {

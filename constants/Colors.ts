@@ -17,3 +17,10 @@ export default {
     tabIconSelected: tintColorDark,
   },
 };
+
+export enum ColorDao {
+  topPrimaryGradient = '#E31937',
+  bottomPrimaryGradient = '#F49332',
+  topBackgroundGradient = '#1A1F24',
+  bottomBackgroundGradient = '#5E6166',
+}

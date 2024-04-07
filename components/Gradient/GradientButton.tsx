@@ -2,6 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React, { useMemo } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { MD3Theme, useTheme } from "react-native-paper";
+import { ColorDao } from "@/constants/Colors";
 
 const GradientButton = (props: GradientButtonProps) => {
     const theme = useTheme();
@@ -9,7 +10,11 @@ const GradientButton = (props: GradientButtonProps) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <LinearGradient
-        colors={props.colors}
+        colors={
+          props.colors != undefined
+            ? props.colors
+            : [ColorDao.topPrimaryGradient, ColorDao.bottomPrimaryGradient]
+        }
         start={{ x: 0.1, y: 0.9 }}
         end={{ x: 0.9, y: 0.1 }}
         style= {styles.container}
@@ -39,5 +44,5 @@ const createStyles = (theme: MD3Theme) => StyleSheet.create({
 interface GradientButtonProps {
   title: string;
   onPress: () => void;
-  colors: string[];
+  colors?: string[];
 }
