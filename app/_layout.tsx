@@ -1,11 +1,12 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { useFonts } from "expo-font";
+
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { DefaultTheme, PaperProvider } from "react-native-paper";
 import { ThemeProp } from "react-native-paper/lib/typescript/types";
-import LoginScreen from "./login";
+import LoginScreen from "./screens/login";
+import { NavigationRouter } from "./navigation/navigation";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -17,46 +18,18 @@ export const unstable_settings = {
   initialRouteName: "login",
 };
 
-const theme: ThemeProp = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#F3901D',
-  },
-  roundness: 20,
-}
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
-    ...FontAwesome.font,
-  });
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
-  useEffect(() => {
-    if (error) throw error;
-  }, [error]);
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
 
   return <RootLayoutNav />;
 }
 
 function RootLayoutNav() {
   return (
-    <PaperProvider theme={theme}>
-      <LoginScreen />
-    </PaperProvider>
+   
   );
 }

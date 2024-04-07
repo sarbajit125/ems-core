@@ -1,6 +1,6 @@
 import { View, Image, StyleSheet } from "react-native";
-import { TextInput, Icon, Button, Text } from "react-native-paper";
-import React from "react";
+import { TextInput, Icon, Button, Text, MD3Theme } from "react-native-paper";
+import React, { useMemo } from "react";
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
 import { LinearGradient } from "expo-linear-gradient";
@@ -9,6 +9,7 @@ import { ColorDao } from "@/constants/Colors";
 
 const LoginScreen = () => {
   const theme = useTheme();
+  const styles = useMemo(() => createStyles(theme), [theme])
   return (
     <LinearGradient
       colors={[ColorDao.topBackgroundGradient, ColorDao.bottomBackgroundGradient]}
@@ -24,12 +25,7 @@ const LoginScreen = () => {
           }}
         />
         <Text
-          style={{
-            alignSelf: "center",
-            fontSize: 18,
-            color: theme.colors.onPrimary,
-            marginVertical: 6,
-          }}
+          style={styles.title}
         >
           Welcome to EMS
         </Text>
@@ -42,11 +38,7 @@ const LoginScreen = () => {
               <TextInput.Icon
                 icon={() => (
                   <View
-                    style={{
-                      flex: 1,
-                      justifyContent: "flex-end",
-                      alignItems: "center",
-                    }}
+                    style={styles.textFieldView}
                   >
                     <MaterialCommunityIcons
                       name="email"
@@ -67,11 +59,7 @@ const LoginScreen = () => {
               <TextInput.Icon
                 icon={() => (
                   <View
-                    style={{
-                      flex: 1,
-                      justifyContent: "flex-end",
-                      alignItems: "center",
-                    }}
+                    style={styles.textFieldView}
                   >
                     <Fontisto
                       name="locked"
@@ -109,7 +97,7 @@ const LoginScreen = () => {
 
 export default LoginScreen;
 
-const styles = StyleSheet.create({
+const createStyles = (theme: MD3Theme) => StyleSheet.create({
   container: {},
   logo: {
     width: 180,
@@ -119,7 +107,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: "grey",
+    backgroundColor: theme.colors.onPrimary,
     marginLeft: 6,
     flex: 1,
   },
@@ -142,7 +130,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginHorizontal: 4,
     padding: 4,
-    color: "grey",
+    color:theme.colors.onPrimary,
   },
   accountView: {
     marginHorizontal: 16,
@@ -154,7 +142,7 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: "center",
     fontSize: 18,
-    color: "grey",
+    color: theme.colors.onPrimary,
     marginVertical: 6,
   },
   keepBtn: {
@@ -166,4 +154,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     gap: 3,
   },
-});
+  textfieldView: {
+      flex: 1,
+      justifyContent: "flex-end",
+      alignItems: "center",
+  }
+})
