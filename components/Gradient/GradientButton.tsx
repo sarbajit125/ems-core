@@ -1,26 +1,20 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import React from "react";
+import React, { useMemo } from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { useTheme } from "react-native-paper";
+import { MD3Theme, useTheme } from "react-native-paper";
 
 const GradientButton = (props: GradientButtonProps) => {
     const theme = useTheme();
+    const styles = useMemo(() => createStyles(theme), [theme]) 
   return (
     <TouchableOpacity onPress={props.onPress}>
       <LinearGradient
         colors={props.colors}
         start={{ x: 0.1, y: 0.9 }}
         end={{ x: 0.9, y: 0.1 }}
-        style= {{
-            display: 'flex',
-            flexDirection: 'row',
-            padding: 14,
-            justifyContent: 'center',
-            alignItems: 'center',
-            borderRadius: 16,
-        }}
+        style= {styles.container}
       >
-        <Text style={{color: theme.colors.onPrimary}}>{props.title}</Text>
+        <Text style={styles.title}>{props.title}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
@@ -28,7 +22,19 @@ const GradientButton = (props: GradientButtonProps) => {
 
 export default GradientButton;
 
-const styles = StyleSheet.create({});
+const createStyles = (theme: MD3Theme) => StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        padding: 14,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 16,
+    },
+    title: {
+        color: theme.colors.onPrimary
+    }
+});
 
 interface GradientButtonProps {
   title: string;
