@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/home";
 import LoginScreen from "../screens/login";
 import { NavigationContainer } from "@react-navigation/native";
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const NavigationRouter = () => (
   <NavigationContainer>
@@ -13,10 +13,18 @@ export const NavigationRouter = () => (
         component={LoginScreen}
       />
       <Stack.Screen
-        name="home"
+        name="Home"
         options={{ headerShown: false }}
         component={HomeScreen}
       />
     </Stack.Navigator>
   </NavigationContainer>
 );
+
+
+export type RootStackParamList = {
+  Login: undefined,
+  Home: undefined,
+  Profile: { userId: string };
+}
+

@@ -13,16 +13,18 @@ import {
   useForm,
 } from "react-hook-form";
 import FormInput from "@/components/Input/FormInput";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/navigation";
 
 type FormValues = {
   email: string;
   password: string;
 };
 
-const LoginScreen = () => {
+const LoginScreen = ({ route, navigation }: LoginScreenInitialProps) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
-  const { ...methods } = useForm({ mode: "onChange" });
+  const { ...methods } = useForm<FormValues>({ mode: "onChange" });
   const onSubmit: SubmitHandler<FormValues> = (data) => console.log({ data });
 
   const [formError, setError] = useState<Boolean>(false);
@@ -208,3 +210,7 @@ const createStyles = (theme: MD3Theme) =>
       alignItems: "center",
     },
   });
+type LoginScreenInitialProps = NativeStackScreenProps<
+  RootStackParamList,
+  "Login"
+>;
