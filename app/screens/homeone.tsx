@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
-import { useTheme, MD3Theme, Button, Text } from "react-native-paper";
+import { useTheme, MD3Theme, Button, Text, Avatar, IconButton } from "react-native-paper";
 
 import serviceData from "../utility/home_services.json";
 import { HomeServiceDao } from "../models/uiModel";
@@ -14,7 +14,16 @@ function HomeOneScreen() {
   }, []);
   return (
     <View style={styles.container}>
-      <View style={styles.topView}></View>
+      <View style={styles.topView}>
+      <View style={styles.navView}>
+          <Image
+            style={styles.logo}
+            source={require('../../assets/images/booking.png')}
+          />
+          <View style={styles.navRightView}>
+          </View>
+        </View>
+      </View>
       <View style={styles.serviceView}>
         <View style={styles.gridView}>
           {service.map((item) => (
