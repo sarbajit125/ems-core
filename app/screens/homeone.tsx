@@ -1,14 +1,37 @@
-import React, { useMemo } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
+import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
 import { useTheme, MD3Theme, Button, Text } from "react-native-paper";
+
+import serviceData from "../utility/home_services.json";
+import { HomeServiceDao } from "../models/uiModel";
 
 function HomeOneScreen() {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
+  const [service, setServices] = useState<HomeServiceDao[]>([]);
+  useEffect(() => {
+    setServices(serviceData);
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.topView}></View>
-      <View style={styles.serviceView}></View>
+      <View style={styles.serviceView}>
+        <View style={styles.gridView}>
+          {service.map((item) => (
+            <TouchableHighlight key={item.serviceCode}>
+              <View style={styles.gridItem}>
+                <Image
+                  style={styles.gridItemImage}
+                  source={require(`../../assets/images/tax.png`)}
+                />
+                <Text style={styles.gridItemName} variant="labelMedium">
+                  {item.serviceName}
+                </Text>
+              </View>
+            </TouchableHighlight>
+          ))}
+        </View>
+      </View>
       <View style={styles.bottomView}>
         <Image
           style={styles.bottomBanner}
