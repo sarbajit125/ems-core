@@ -25,7 +25,10 @@ const LoginScreen = ({ route, navigation }: LoginScreenInitialProps) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   const { ...methods } = useForm<FormValues>({ mode: "onChange" });
-  const onSubmit: SubmitHandler<FormValues> = (data) => console.log({ data });
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log({ data })
+    navigation.navigate('Home');
+  };
 
   const [formError, setError] = useState<Boolean>(false);
 
