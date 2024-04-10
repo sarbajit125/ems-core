@@ -14,8 +14,8 @@ const HomeScreen = ({ route, navigation }: HomeScreenInitialProps) => {
   const styles = useMemo(() => createStyles(theme), [theme]);
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Feed" component={HomeOneScreen} />
-      <Tab.Screen name="Messages" component={HomeTwoScreen} />
+      <Tab.Screen name="Feed" component={HomeOneScreen} options={{headerShown: false}} />
+      <Tab.Screen name="Messages" component={HomeTwoScreen} options={{headerShown: false}} />
     </Tab.Navigator>
   );
 };

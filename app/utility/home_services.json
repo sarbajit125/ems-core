@@ -1,0 +1,47 @@
+[
+  {
+    "serviceCode": "attendance",
+    "serviceName": "Attendance",
+    "serviceImg": "attendance.png"
+  },
+  {
+    "serviceCode": "leaves",
+    "serviceName": "Leaves",
+    "serviceImg": "leaves.png"
+  },
+  {
+    "serviceCode": "claims",
+    "serviceName": "Claims",
+    "serviceImg": "claims.png"
+  },
+  {
+    "serviceCode": "payslip",
+    "serviceName": "Payslip",
+    "serviceImg": "payslip.png"
+  },
+  {
+    "serviceCode": "incomeTax",
+    "serviceName": "Income Tax",
+    "serviceImg": "tax.png"
+  },
+  {
+    "serviceCode": "hrMemo",
+    "serviceName": "HR Memo",
+    "serviceImg": "hrMemo.png"
+  },
+  {
+    "serviceCode": "companyPolicies",
+    "serviceName": "Company Policies",
+    "serviceImg": "policy.png"
+  },
+  {
+    "serviceCode": "meetingRoomBooking",
+    "serviceName": "Meeting Room Booking",
+    "serviceImg": "booking.png"
+  },
+  {
+    "serviceCode": "more",
+    "serviceName": "More",
+    "serviceImg": "more.png"
+  }
+]
