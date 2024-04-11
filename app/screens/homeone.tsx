@@ -1,9 +1,17 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { View, StyleSheet, Image, TouchableHighlight } from "react-native";
-import { useTheme, MD3Theme, Button, Text, Avatar, IconButton } from "react-native-paper";
+import {
+  useTheme,
+  MD3Theme,
+  Button,
+  Text,
+  Avatar,
+  Icon,
+} from "react-native-paper";
 
 import serviceData from "../utility/home_services.json";
 import { HomeServiceDao } from "../models/uiModel";
+import { getImageValueByKey } from "@/constants/ImageConstants";
 
 function HomeOneScreen() {
   const theme = useTheme();
@@ -15,12 +23,21 @@ function HomeOneScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.topView}>
-      <View style={styles.navView}>
+        <View style={styles.navView}>
           <Image
             style={styles.logo}
-            source={require('../../assets/images/booking.png')}
+            source={require("../../assets/images/Logo_Colour.png")}
           />
           <View style={styles.navRightView}>
+            <TouchableHighlight style={styles.navRightItem}>
+              <Icon source={"bell"} size={22} />
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.navRightItem}>
+              <Avatar.Image
+                size={22}
+                source={require("../../assets/images/user.png")}
+              />
+            </TouchableHighlight>
           </View>
         </View>
       </View>
@@ -31,7 +48,7 @@ function HomeOneScreen() {
               <View style={styles.gridItem}>
                 <Image
                   style={styles.gridItemImage}
-                  source={require(`../../assets/images/tax.png`)}
+                  source={getImageValueByKey(item.serviceImg)}
                 />
                 <Text style={styles.gridItemName} variant="labelMedium">
                   {item.serviceName}
@@ -77,7 +94,10 @@ const createStyles = (theme: MD3Theme) =>
     navRightView: {
       flexDirection: "row",
       padding: 4,
-      alignItems: "baseline",
+      alignItems: "center",
+    },
+    navRightItem:{
+      padding: 3,
     },
     logo: {
       width: 140,
