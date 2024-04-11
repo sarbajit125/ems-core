@@ -42,10 +42,12 @@ function HomeOneScreen() {
               />
             </TouchableHighlight>
           </View>
-          <Text variant="labelLarge"> Hello Jon</Text>
-          <Card>
-            <Card.Title title={dayjs().format(DateFormats.spacedData)} />
+        </View>
+        <View style={styles.greetingView}>
+          <Text variant="headlineSmall"> Hello Jon</Text>
+          <Card style={styles.card}>
             <Card.Content>
+              <Text>{dayjs().format(DateFormats.spacedData)}</Text>
               <Text>Hooray ! Today is your payday!, Get yourself a treat</Text>
             </Card.Content>
           </Card>
@@ -106,12 +108,12 @@ const createStyles = (theme: MD3Theme) =>
       padding: 4,
       alignItems: "center",
     },
-    navRightItem:{
+    navRightItem: {
       padding: 3,
     },
     logo: {
       width: 140,
-      height: 80,
+      height: 40,
       resizeMode: "contain",
     },
     bottomView: {
@@ -154,4 +156,13 @@ const createStyles = (theme: MD3Theme) =>
       margin: 4,
       alignSelf: "center",
     },
+    greetingView: {
+      paddingLeft: 16,
+      paddingRight: 16,
+      flexDirection: "column",
+    },
+    card: {
+      marginTop: 8,
+      borderRadius: 4,
+    }
   });

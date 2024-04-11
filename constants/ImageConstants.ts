@@ -20,7 +20,6 @@ function isImageConstant(key: string): key is keyof typeof ImageConstants {
 
 // Define function to get image value by key
 export function getImageValueByKey(key: string): ImageConstants {
-    console.log(key)
     if (isImageConstant(key)) {
        const result = ImageConstants[key]
        return result
