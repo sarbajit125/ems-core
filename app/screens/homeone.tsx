@@ -15,6 +15,8 @@ import { HomeServiceDao } from "../models/uiModel";
 import { getImageValueByKey } from "@/constants/ImageConstants";
 import dayjs from "dayjs";
 import { DateFormats } from "@/constants/CoreConstants";
+import { ColorDao } from "@/constants/Colors";
+import { LinearGradient } from "expo-linear-gradient";
 
 function HomeOneScreen() {
   const theme = useTheme();
@@ -25,7 +27,15 @@ function HomeOneScreen() {
   }, []);
   return (
     <View style={styles.container}>
-      <View style={styles.topView}>
+      <LinearGradient
+        colors={[
+          ColorDao.topBackgroundGradient,
+          ColorDao.bottomBackgroundGradient,
+        ]}
+        style={styles.topView}
+        start={{ x: 0.1, y: 0.9 }}
+        end={{ x: 0.9, y: 0.1 }}
+      >
         <View style={styles.navView}>
           <Image
             style={styles.logo}
@@ -33,7 +43,7 @@ function HomeOneScreen() {
           />
           <View style={styles.navRightView}>
             <TouchableHighlight style={styles.navRightItem}>
-              <Icon source={"bell"} size={22} />
+              <Icon source={"bell"} size={22} color={theme.colors.onPrimary} />
             </TouchableHighlight>
             <TouchableHighlight style={styles.navRightItem}>
               <Avatar.Image
@@ -44,7 +54,7 @@ function HomeOneScreen() {
           </View>
         </View>
         <View style={styles.greetingView}>
-          <Text variant="headlineSmall"> Hello Jon</Text>
+          <Text variant="headlineSmall" style={styles.greetingText}> Hello Jon</Text>
           <Card style={styles.card}>
             <Card.Content>
               <Text>{dayjs().format(DateFormats.spacedData)}</Text>
@@ -52,7 +62,7 @@ function HomeOneScreen() {
             </Card.Content>
           </Card>
         </View>
-      </View>
+      </LinearGradient>
       <View style={styles.serviceView}>
         <View style={styles.gridView}>
           {service.map((item) => (
@@ -70,19 +80,27 @@ function HomeOneScreen() {
           ))}
         </View>
       </View>
-      <View style={styles.bottomView}>
+      <LinearGradient
+        colors={[
+          ColorDao.topBackgroundGradient,
+          ColorDao.bottomBackgroundGradient,
+        ]}
+        start={{ x: 0.1, y: 0.9 }}
+        end={{ x: 0.9, y: 0.1 }}
+        style={styles.bottomView}
+      >
         <Image
           style={styles.bottomBanner}
           source={{
             uri: "https://goldeneagle.comviva.com/idm-service/idm/v0/assets/images/Icon_comviva_orb.png",
           }}
         />
-        <View>
-          <Text variant="headlineMedium">Refer & Earn!</Text>
-          <Text variant="bodyMedium">Spread the word we'll reward you</Text>
+        <View style={styles.bannerTextView}>
+          <Text variant="headlineSmall" style={styles.greetingText}>Refer & Earn!</Text>
+          <Text variant="bodyMedium" style={styles.greetingText}>Spread the word we'll reward you</Text>
           <Button mode="contained">Click to share Now</Button>
         </View>
-      </View>
+      </LinearGradient>
     </View>
   );
 }
@@ -95,6 +113,8 @@ const createStyles = (theme: MD3Theme) =>
     },
     topView: {
       height: 200,
+      borderBottomLeftRadius: 12,
+      borderBottomRightRadius: 12,
     },
     navView: {
       marginTop: 32,
@@ -118,16 +138,20 @@ const createStyles = (theme: MD3Theme) =>
     },
     bottomView: {
       height: 140,
-      backgroundColor: "blue",
       flexDirection: "row",
+      padding: 2,
+      marginTop: 8,
+      borderTopLeftRadius: 12,
+      borderTopRightRadius: 12,
     },
     bottomBanner: {
       width: 120,
+      height: 80,
+      alignSelf: "center",
       resizeMode: "contain",
     },
     serviceView: {
       flex: 1,
-      backgroundColor: "yellow",
     },
     gridView: {
       flexDirection: "row",
@@ -139,8 +163,8 @@ const createStyles = (theme: MD3Theme) =>
     gridItem: {
       flexDirection: "column",
       gap: 8,
-      height: 60,
-      padding: 16,
+      height: 80,
+      padding: 14,
       margin: 16,
     },
     gridItemImage: {
@@ -164,5 +188,13 @@ const createStyles = (theme: MD3Theme) =>
     card: {
       marginTop: 8,
       borderRadius: 4,
+    },
+    bannerTextView: {
+      flexDirection: "column",
+      gap: 6,
+      justifyContent: "center",
+    },
+    greetingText: {
+      color: theme.colors.onPrimary,
     }
   });
