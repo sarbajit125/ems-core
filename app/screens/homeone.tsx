@@ -7,11 +7,14 @@ import {
   Text,
   Avatar,
   Icon,
+  Card,
 } from "react-native-paper";
 
 import serviceData from "../utility/home_services.json";
 import { HomeServiceDao } from "../models/uiModel";
 import { getImageValueByKey } from "@/constants/ImageConstants";
+import dayjs from "dayjs";
+import { DateFormats } from "@/constants/CoreConstants";
 
 function HomeOneScreen() {
   const theme = useTheme();
@@ -39,6 +42,13 @@ function HomeOneScreen() {
               />
             </TouchableHighlight>
           </View>
+          <Text variant="labelLarge"> Hello Jon</Text>
+          <Card>
+            <Card.Title title={dayjs().format(DateFormats.spacedData)} />
+            <Card.Content>
+              <Text>Hooray ! Today is your payday!, Get yourself a treat</Text>
+            </Card.Content>
+          </Card>
         </View>
       </View>
       <View style={styles.serviceView}>
